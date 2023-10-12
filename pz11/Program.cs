@@ -82,7 +82,7 @@ namespace lab1
                 int k = i;
                 Thread thread = new Thread(() =>
                 {
-                    WriteLine("Thread" + k + " come in");
+                    //WriteLine("Thread" + k + " come in");
                     for (int j = 0; j < step && length > 0; j++)
                     {
                         lock (objLock)
@@ -92,7 +92,7 @@ namespace lab1
                         MM(k + j);
                     }
                     Thread.Sleep(1000);
-                    WriteLine("Thread" + k + " come out");
+                    //WriteLine("Thread" + k + " come out");
 
                 });
                 thread.Start();
@@ -274,13 +274,16 @@ namespace lab1
     {
         static void Main(string[] args)
         {
-            int n = 3; // Replace with your desired value
-            int m = 3; // Replace with your desired value
+            int n = 100; // Replace with your desired value
+            int m = 100; // Replace with your desired value
+            Console.BackgroundColor = ConsoleColor.White; // Установите белый фон
+            Console.ForegroundColor = ConsoleColor.Black; // Установите черный цвет текста
+            Console.Clear();
             var t1 = new Stopwatch();
             t1.Start();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 1; i++)
             {
-                PaymentMatrix paymentMatrix = new PaymentMatrix(n, m, 3);
+                PaymentMatrix paymentMatrix = new PaymentMatrix(n, m, 20);
                 paymentMatrix.Print(paymentMatrix.Data); // Print the initial matrix
                 //WriteLine("Solving the game:");
                 paymentMatrix.SolveGameParallel();
